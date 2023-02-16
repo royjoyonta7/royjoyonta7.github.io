@@ -1,14 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        My Site!
-    </title>
-</head>
-<body>
-    <h1>This is my Github Pages Website!</h1>
-</body>
-</html>
+    <title>Product Selector</title>
+  </head>
+  <body>
+    <h1>Product Selector</h1>
+    <form id="product-selector" onsubmit="return selectProduct()">
+      <p>
+        <label for="color">Color:</label>
+        <select id="color">
+          <option value="red">Red</option>
+          <option value="green">Green</option>
+          <option value="blue">Blue</option>
+          <option value="yellow">Yellow</option>
+          <option value="purple">Purple</option>
+        </select>
+      </p>
+      <p>
+        <label for="texture">Texture:</label>
+        <select id="texture">
+          <option value="smooth">Smooth</option>
+          <option value="rough">Rough</option>
+          <option value="soft">Soft</option>
+          <option value="hard">Hard</option>
+          <option value="shiny">Shiny</option>
+        </select>
+      </p>
+      <p>
+        <label for="fabric">Fabric:</label>
+        <select id="fabric">
+          <option value="cotton">Cotton</option>
+          <option value="wool">Wool</option>
+          <option value="silk">Silk</option>
+          <option value="leather">Leather</option>
+          <option value="denim">Denim</option>
+        </select>
+      </p>
+      <p>
+        <label for="style">Style:</label>
+        <select id="style">
+          <option value="casual">Casual</option>
+          <option value="formal">Formal</option>
+          <option value="sporty">Sporty</option>
+          <option value="vintage">Vintage</option>
+          <option value="modern">Modern</option>
+        </select>
+      </p>
+      <button type="submit">Select Product</button>
+    </form>
+    <div id="product-link"></div>
+    
+    <script>
+      var links = {
+        red_smooth_cotton_casual: "https://example.com/product1",
+        red_smooth_cotton_formal: "https://example.com/product2",
+        red_smooth_cotton_sporty: "https://example.com/product3",
+        red_smooth_cotton_vintage: "https://example.com/product4",
+        red_smooth_cotton_modern: "https://example.com/product5",
+        red_smooth_wool_casual: "https://example.com/product6",
+        red_smooth_wool_formal: "https://example.com/product7",
+        red_smooth_wool_sporty: "https://example.com/product8",
+        red_smooth_wool_vintage: "https://example.com/product9",
+        red_smooth_wool_modern: "https://example.com/product10",
+        // and so on for all possible combinations...
+      };
+      
+     function selectProduct() {
+  var color = document.getElementById("color").value;
+  var texture = document.getElementById("texture").value;
+  var fabric = document.getElementById("fabric").value;
+  var style = document.getElementById("style").value;
+
+  var key = color + "_" + texture + "_" + fabric + "_" + style;
+  var link = links[key];
+  if (link) {
+    document.getElementById("product-link").innerHTML = "<a href='" + link + "'>" + link + "</a>";
+  } else {
+    document.getElementById("product-link").innerHTML = "No product found for the selected options.";
+  }
+
+  return false;
+}
+</script>
